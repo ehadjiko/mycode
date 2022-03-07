@@ -10,4 +10,16 @@ proto.extend(proto2) # pass proto2 as an argument to the extend method
 print(proto)
 protoa.append(proto2) # pass proto2 as an argument to the append method
 
-Print("proto", "protoa", sep=",")
+#print("proto", "protoa", sep=",")
+
+
+print(proto)
+
+print(protoa)
+
+print(proto+protoa)
+
+# this returns NOTHING
+proto.insert(3,"pink panther")
+
+print(proto)
