@@ -12,16 +12,16 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 def parsecsvdata():
-    """returns a list. [0] is 10gb and [1] 25gb data"""
-    summary = [] # list that will contain [(10gb), (25gb)]
+    """returns a list. [0] is LAN and [1] WAN data"""
+    summary = [] # list that will contain [(LAN), (WAN)]
 
     # open csv data
-    with open("/home/student/mycode/graphing/2018summary3.csv",\
+    with open("/home/student/mycode/graphing/2018summary.csv",\
      "r") as downtime:
         # parse csv data with csv.reader
         downdata = csv.reader(downtime, delimiter=",")
         for row in downdata:
-            rowdat = (int(row[0]), int(row[1]), int(row[2]), int(row[3]),int(row[4]), int(row[5]), int(row[6]))
+            rowdat = (int(row[0]), int(row[1]), int(row[2]), int(row[3]))
             summary.append(rowdat) # add dict to list
     return summary
 
@@ -29,8 +29,8 @@ def main():
     N = 4
     ## grab our data
     summary = parsecsvdata() # grab our data
-    localnetMeans = summary[0] # 10gb data
-    wanMeans = summary[1] # 25gb data
+    localnetMeans = summary[0] # LAN data
+    wanMeans = summary[1] # WAN data
 
     ind = np.arange(N)    # the x locations for the groups
     # the width of the bars: can also be len(x) sequence
@@ -42,16 +42,16 @@ def main():
     p2 = plt.bar(ind, wanMeans, width, bottom=localnetMeans)
 
     # Describe the table metadata
-    plt.ylabel("Length of Outage (IOPS)")
-    plt.title("2018 Network Test Summary")
-    plt.xticks(ind, ("T1", "T2", "T3", "T4", "T5", "T6", "T7" ))
+    plt.ylabel("Length of Outage (mins)")
+    plt.title("2018 Network Summary")
+    plt.xticks(ind, ("Q1", "Q2", "Q3", "Q4"))
     plt.yticks(np.arange(0, 81, 10))
-    plt.legend((p1[0], p2[0]), ("10gb", "25gb"))
+    plt.legend((p1[0], p2[0]), ("LAN", "WAN"))
 
     # SAVE the graph locally
-    plt.savefig("/home/student/mycode/graphing/2018summaryv3.png")
+    plt.savefig("/home/student/mycode/graphing/2018summaryv2.png")
     # Save to "~/static"
-    plt.savefig("/home/student/static/2018summaryv3.png")       
+    plt.savefig("/home/student/static/2018summaryv2.png")       
     print("Graph created.")
 
 if __name__ == "__main__":
