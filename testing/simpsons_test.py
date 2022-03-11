@@ -35,6 +35,7 @@ def test_troymcclure():
     assert troymcclure(5) == "2 minus 5 equals negative fun!"
     assert not troymcclure(1)
 
+...
 # testing a failure
 #def test_homer_fail():
 #    # This should produce a failure.
