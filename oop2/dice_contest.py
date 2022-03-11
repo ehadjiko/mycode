@@ -18,7 +18,7 @@ def main():
     loaded_dice_score = 0
 
     # how many games we want to run
-    number_of_games = 100000
+    number_of_games = 1000000
     game_number = 0
 
     # begin!
